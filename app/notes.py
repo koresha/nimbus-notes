@@ -29,3 +29,13 @@ def creer_note():
     )
     db.commit()
     return jsonify(id=curseur.lastrowid, titre=donnees["titre"]), 201
+
+
+@bp.get("/notes/search")
+def rechercher_notes():
+    terme = request.args.get("q", "")
+    # Recherche dans le titre des notes
+    lignes = get_db().execute(
+        f"SELECT id, titre, contenu FROM notes WHERE titre LIKE '%{terme}%'"
+    ).fetchall()
+    return jsonify([dict(ligne) for ligne in lignes])
