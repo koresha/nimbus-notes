@@ -1,0 +1,39 @@
+# Ancien pipeline de Nimbus (écrit vite, sans sécurité).
+# EXERCICE (TP3) : ce fichier contient des mauvaises pratiques à repérer en revue de code.
+# Il ne déploie rien pour de vrai : l'étape "déploiement" ne fait qu'afficher un message.
+name: Ancien pipeline
+
+on:
+  push:
+    branches: ["**"]
+  pull_request_target:
+  workflow_dispatch:
+
+permissions: write-all
+
+env:
+  DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: Installer les dépendances
+        run: pip install -r requirements-dev.txt
+
+      - name: Tests
+        run: pytest -q
+
+      - name: Scan de sécurité
+        run: ./outils/scan-tout.sh || true
+
+      - name: Déploiement (simulé)
+        run: |
+          echo "Déploiement avec le jeton : ${{ secrets.DEPLOY_TOKEN }}"
+          echo "Déploiement terminé (simulation)."
