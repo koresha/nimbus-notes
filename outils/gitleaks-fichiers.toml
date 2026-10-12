@@ -1,0 +1,11 @@
+# Configuration de gitleaks pour le mode « fichiers actuels » (./outils/scan-secrets.sh --fichiers).
+# On garde toutes les règles par défaut, sauf pour le fichier .env local : il est ignoré par Git
+# et c'est précisément l'endroit prévu pour ranger les secrets sur votre poste.
+title = "Nimbus - fichiers actuels"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Le .env local (non commité) peut contenir des secrets"
+paths = ['''(^|/)\.env$''']

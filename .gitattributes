@@ -1,0 +1,5 @@
+# Fins de ligne : les scripts doivent rester en LF (sinon bash échoue sous Windows)
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.yml text eol=lf
+*.tf text eol=lf

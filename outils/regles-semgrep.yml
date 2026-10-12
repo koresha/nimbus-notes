@@ -1,0 +1,65 @@
+# Règles semgrep de Nimbus (fonctionnent hors ligne, sans compte ni téléchargement).
+# Chaque règle décrit un motif de code dangereux à repérer en revue.
+rules:
+  - id: nimbus-sql-construit-par-texte
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Requête SQL construite en collant du texte (concaténation, f-string, format ou %).
+      Si la valeur vient de l'utilisateur, la requête peut être détournée (injection SQL).
+      Correction : requête paramétrée, par exemple db.execute("... WHERE titre LIKE ?", (valeur,)).
+    pattern-either:
+      - pattern: $DB.execute(f"...", ...)
+      - pattern: $DB.execute($A + ..., ...)
+      - pattern: $DB.execute("...".format(...), ...)
+      - pattern: $DB.execute("..." % ..., ...)
+    metadata:
+      categorie: injection-sql
+
+  - id: nimbus-secret-en-dur
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Un secret semble écrit en dur dans le code (nom de variable évocateur + valeur littérale).
+      Correction : lire la valeur depuis une variable d'environnement, et révoquer le secret s'il a été commité.
+    patterns:
+      - pattern: $VAR = "..."
+      - pattern-not: $VAR = ""
+      - metavariable-regex:
+          metavariable: $VAR
+          regex: (?i).*(secret|token|passw|api_?key).*
+    metadata:
+      categorie: secret
+
+  - id: nimbus-mode-debug-actif
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Le mode debug est activé. Il expose des détails internes et une console de débogage.
+      Correction : debug désactivé par défaut, activé seulement par une variable d'environnement en local.
+    pattern-either:
+      - pattern: $APP.run(..., debug=True, ...)
+      - pattern: DEBUG = True
+    metadata:
+      categorie: configuration
+
+  - id: nimbus-yaml-load-non-sur
+    languages: [python]
+    severity: ERROR
+    message: >-
+      yaml.load() sans SafeLoader peut construire des objets arbitraires. Utiliser yaml.safe_load().
+    patterns:
+      - pattern: yaml.load(...)
+      - pattern-not: yaml.load(..., Loader=yaml.SafeLoader)
+      - pattern-not: yaml.load(..., yaml.SafeLoader)
+    metadata:
+      categorie: deserialisation
+
+  - id: nimbus-tls-non-verifie
+    languages: [python]
+    severity: ERROR
+    message: >-
+      verify=False désactive la vérification du certificat TLS : la connexion n'est plus authentifiée.
+    pattern: requests.$METHOD(..., verify=False, ...)
+    metadata:
+      categorie: cryptographie
