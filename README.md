@@ -16,7 +16,8 @@ Ce dépôt accompagne le cours DevSecOps de l'ESGI (M2 Systèmes, Réseaux et Cl
 | `requirements.txt` | Les bibliothèques Python utilisées (versions épinglées) |
 | `Dockerfile` | Construit l'image de l'API |
 | `infra/` | Terraform AWS (bucket, réseau, base) : **jamais appliqué** |
-| `.github/workflows/` | Pipelines GitHub Actions |
+| `exercices/` | Ancien pipeline à relire au TP3 (rangé ici pour ne pas s'exécuter) |
+| `.github/workflows/` | Pipelines GitHub Actions (créé au TP3) |
 | `outils/` | Scripts de sécurité (tout tourne dans Docker) |
 | `docs/fiche-menaces.md` | Fiche de modélisation des menaces (TP1) |
 | `game-day/` | Matériel de la dernière séance |
