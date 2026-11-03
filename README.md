@@ -1,6 +1,6 @@
 # nimbus-notes
 
-API de prise de notes de **Nimbus**, une jeune startup. Écrite vite, sans sécurité. Dans quelques jours, un gros client (la banque fictive *Banque Azur*) va auditer la chaîne de livraison. Votre mission, séance après séance : la rendre présentable.
+Une petite API de prise de notes en Python (Flask). Elle a été écrite vite, sans sécurité : c'est **le projet du cours**, que vous allez sécuriser outil après outil, séance après séance.
 
 > **Tout ce dépôt est un exercice.** Les secrets, mots de passe, jetons et ressources AWS qu'il contient sont **fictifs** : ils ne donnent accès à rien. Rien n'est jamais déployé.
 
@@ -19,7 +19,8 @@ Ce dépôt accompagne le cours DevSecOps de l'ESGI (M2 Systèmes, Réseaux et Cl
 | `exercices/` | Ancien pipeline à relire au TP3 (rangé ici pour ne pas s'exécuter) |
 | `.github/workflows/` | Pipelines GitHub Actions (créé au TP3) |
 | `outils/` | Scripts de sécurité (tout tourne dans Docker) |
-| `docs/fiche-menaces.md` | Fiche de modélisation des menaces (TP1) |
+| `docs/fiche-menaces.md` | Fiche de modélisation des menaces (bonus du TP1) |
+| `docs/exigences-audit.md` | Liste d'exigences distribuée en séance 6 (ne pas lire avant) |
 | `game-day/` | Matériel de la dernière séance |
 
 ## Prérequis

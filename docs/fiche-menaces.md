@@ -1,8 +1,8 @@
-# Fiche de modélisation des menaces : nimbus-notes (TP1, partie a)
+# Fiche de modélisation des menaces : le projet (TP1, bonus)
 
 **Objectif :** trouver au moins une menace pour chaque lettre de STRIDE. Pas besoin d'être expert : posez-vous les six questions du tableau en regardant le schéma.
 
-## Le schéma de nimbus-notes
+## Le schéma du projet
 
 ```
                        (1) HTTPS                         (3) fichier
@@ -22,7 +22,7 @@ Les flèches et les boîtes sont les endroits où quelque chose peut mal se pass
 
 ## STRIDE en six questions
 
-| Lettre | La question à se poser | Exemple de la vie courante | Menace trouvée sur nimbus-notes | Où (n°) | Parade possible |
+| Lettre | La question à se poser | Exemple de la vie courante | Menace trouvée sur le projet | Où (n°) | Parade possible |
 |---|---|---|---|---|---|
 | **S**poofing (usurpation) | Quelqu'un peut-il se faire passer pour un autre ? | Un faux livreur sonne à la porte | | | |
 | **T**ampering (altération) | Quelqu'un peut-il modifier ce qu'il ne devrait pas ? | Une lettre ouverte et recollée | | | |
