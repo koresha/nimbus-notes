@@ -42,7 +42,7 @@ Dans un deuxième terminal :
 ```bash
 curl http://localhost:8000/health
 curl http://localhost:8000/notes
-curl "http://localhost:8000/notes/search?q=audit"
+curl "http://localhost:8000/notes/search?q=courses"
 ```
 
 Arrêt : `Ctrl+C` dans le premier terminal.
