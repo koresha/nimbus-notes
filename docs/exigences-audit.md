@@ -2,7 +2,7 @@
 
 **De :** Direction de la sécurité, Banque Azur
 **À :** Nimbus, équipe plateforme
-**Objet :** audit de la chaîne de livraison de `nimbus-notes`, jeudi matin
+**Objet :** audit de la chaîne de livraison de `nimbus-notes`, jeudi, à la dernière séance
 
 Avant de signer, nous auditons la manière dont votre logiciel est construit et livré. Voici ce que nous vérifierons. Cochez chaque ligne lorsque vous pouvez la prouver dans le dépôt ou dans le pipeline.
 
