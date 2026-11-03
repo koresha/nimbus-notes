@@ -17,13 +17,15 @@ if [ "$mode" = "--fichiers" ]; then
 else
   titre "Secrets dans l'historique Git (gitleaks)"
   commande="git"
-  option_config=""
+  # Seulement l'historique de la branche courante : dans un pipeline, le checkout rapatrie toutes
+  # les branches, et une branche de test contenant un faux secret ferait échouer les autres.
+  option_config="--log-opts=--full-history HEAD"
 fi
 info "Un secret est une information qui donne un accès : mot de passe, jeton d'API, clé privée."
 
 # shellcheck disable=SC2086
 sortie="$(docker run --rm -w /src -v "$RACINE_HOTE":/src:ro $GIT_SAFE "$IMG_GITLEAKS" \
-  "$commande" /src $option_config --no-banner --no-color --redact --verbose 2>&1)"
+  "$commande" /src "$option_config" --no-banner --no-color --redact --verbose 2>&1)"
 code=$?
 printf '%s\n' "$sortie"
 
