@@ -1,4 +1,4 @@
-# Règles semgrep de Nimbus (fonctionnent hors ligne, sans compte ni téléchargement).
+# Règles semgrep du projet (fonctionnent hors ligne, sans compte ni téléchargement).
 # Chaque règle décrit un motif de code dangereux à repérer en revue.
 rules:
   - id: nimbus-sql-construit-par-texte

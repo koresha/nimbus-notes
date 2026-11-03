@@ -1,7 +1,7 @@
 # Notes d'exemple chargées au premier démarrage
-- titre: Bienvenue chez Nimbus
-  contenu: Première note de démonstration.
-- titre: Réunion audit Banque Azur
-  contenu: Préparer le dossier de sécurité avant l'audit.
+- titre: Première note
+  contenu: Note de démonstration créée au premier démarrage.
+- titre: Liste de courses
+  contenu: Pain, café, piles.
 - titre: Idées de fonctionnalités
   contenu: Étiquettes, partage, export PDF.
